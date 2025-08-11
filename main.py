@@ -109,7 +109,6 @@ def move_tiles(window, tiles, clock, direction):
     updated = True
     blocks = set()
 
-    # Defaults to avoid "possibly unbound" linter warnings
     sort_func = lambda x: x.col
     reverse = False
     delta = (0, 0)
@@ -195,7 +194,7 @@ def end_move(tiles):
     if len(tiles) == ROWS * COLS:
         return "lost"
     row, col = get_random_pos(tiles)
-    tiles[f"{row}{col}"] = Tile(random.choice([1, 2]), row, col)
+    tiles[f"{row}{col}"] = Tile(1, row, col)  # Always spawn 1
     return "continue"
 
 def update_tiles(window, tiles, sorted_tiles):
@@ -208,7 +207,7 @@ def generate_tiles():
     tiles = {}
     for _ in range(2):
         row, col = get_random_pos(tiles)
-        tiles[f"{row}{col}"] = Tile(random.choice([1, 2]), row, col)
+        tiles[f"{row}{col}"] = Tile(1, row, col)  # Always start with 1
     return tiles
 
 def main(window):
