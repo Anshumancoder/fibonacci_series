@@ -21,7 +21,6 @@ MOVE_VEL = 20
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("2048 Fibonacci")
 
-# Precompute Fibonacci sequence
 FIB_SEQUENCE = [1, 1]
 for _ in range(30):
     FIB_SEQUENCE.append(FIB_SEQUENCE[-1] + FIB_SEQUENCE[-2])
@@ -194,7 +193,7 @@ def end_move(tiles):
     if len(tiles) == ROWS * COLS:
         return "lost"
     row, col = get_random_pos(tiles)
-    tiles[f"{row}{col}"] = Tile(1, row, col)  # Always spawn 1
+    tiles[f"{row}{col}"] = Tile(1, row, col)
     return "continue"
 
 def update_tiles(window, tiles, sorted_tiles):
@@ -207,7 +206,7 @@ def generate_tiles():
     tiles = {}
     for _ in range(2):
         row, col = get_random_pos(tiles)
-        tiles[f"{row}{col}"] = Tile(1, row, col)  # Always start with 1
+        tiles[f"{row}{col}"] = Tile(1, row, col) 
     return tiles
 
 def main(window):
